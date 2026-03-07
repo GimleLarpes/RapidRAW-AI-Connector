@@ -303,8 +303,10 @@ def build_workflow(source_path: str, mask_path: str, prompt: str, neg_prompt: st
 
     try:
         wf["28"]["inputs"]["seed"] = seed
-        wf["7"]["inputs"]["text"] = prompt
-        wf["8"]["inputs"]["text"] = neg_prompt
+        if (not prompt == ""):
+            wf["7"]["inputs"]["text"] = prompt
+        if (not neg_prompt == ""):
+            wf["8"]["inputs"]["text"] = neg_prompt
 
         source = source_path.replace("\\", "/")
         mask = mask_path.replace("\\", "/")
